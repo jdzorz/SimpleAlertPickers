@@ -9,7 +9,6 @@ class ViewController: UIViewController {
     enum AlertType: String {
         
         case simple = "Simple"
-        case singlePhoto = "Single Photo"
         case simpleWithImages = "Simple +Images"
         case oneTextField = "One TextField"
         case twoTextFields = "Login form"
@@ -18,18 +17,13 @@ class ViewController: UIViewController {
         case countryPicker = "Country Picker"
         case phoneCodePicker = "Phone Code Picker"
         case currencyPicker = "Currency Picker"
-        case imagePicker = "Image Picker"
-        case photoLibraryPicker = "Photo Library Picker"
         case colorPicker = "Color Picker"
         case textViewer = "Text Viewer"
-        case contactsPicker = "Contacts Picker"
-        case locationPicker = "Location Picker"
-        case telegramPicker = "Telegram Picker"
+
         
         var description: String {
             switch self {
             case .simple: return "3 different buttons"
-            case .singlePhoto: return "Selection one single photo (cameras and videos are disabled)"
             case .simpleWithImages: return "3 buttons with image"
             case .dataPicker: return "Select date and time"
             case .pickerView: return "Select alert's main view height"
@@ -38,28 +32,21 @@ class ViewController: UIViewController {
             case .countryPicker: return "TableView"
             case .phoneCodePicker: return "TableView"
             case .currencyPicker: return "TableView"
-            case .imagePicker: return "CollectionView, horizontal flow"
-            case .photoLibraryPicker: return "Select photos from Photo Library"
             case .colorPicker: return "Storyboard & Autolayout"
             case .textViewer: return "TextView, not editable"
-            case .contactsPicker: return "With SearchController"
-            case .locationPicker: return "MapView With SearchController"
-            case .telegramPicker: return "Similar to the Telegram"
             }
         }
         
         var color: UIColor? {
             switch self {
-            case .simple, .simpleWithImages, .telegramPicker, .singlePhoto:
+            case .simple, .simpleWithImages:
                 return UIColor(hex: 0x007AFF)
             case .oneTextField, .twoTextFields:
                 return UIColor(hex: 0x5AC8FA)
-            case .dataPicker, .pickerView, .contactsPicker, .locationPicker:
+            case .dataPicker, .pickerView:
                 return UIColor(hex: 0x4CD964)
             case .countryPicker, .phoneCodePicker, .currencyPicker, .textViewer:
                 return UIColor(hex: 0xFF5722)
-            case .imagePicker, .photoLibraryPicker:
-                return UIColor(hex: 0xFF2DC6)
             case .colorPicker:
                 return nil
             }
@@ -67,8 +54,6 @@ class ViewController: UIViewController {
     }
     
     fileprivate lazy var alerts: [AlertType] = [
-        .telegramPicker,
-        .singlePhoto,
         .simple,
         .simpleWithImages,
         .oneTextField,
@@ -78,12 +63,8 @@ class ViewController: UIViewController {
         .countryPicker,
         .phoneCodePicker,
         .currencyPicker,
-        .imagePicker,
-        .photoLibraryPicker,
         .colorPicker,
         .textViewer,
-        .contactsPicker,
-        .locationPicker
     ]
     
     // MARK: UI Metrics
@@ -324,29 +305,7 @@ class ViewController: UIViewController {
             alert.addLocalePicker(type: .currency) { info in Log(info) }
             alert.addAction(title: "Cancel".localized, style: .cancel)
             alert.show()
-            
-        case .imagePicker:
-            let photos: [UIImage] = [#imageLiteral(resourceName: "interior_design_1"), #imageLiteral(resourceName: "interior_design_2"), #imageLiteral(resourceName: "interior_design_3"), #imageLiteral(resourceName: "interior_design_4"), #imageLiteral(resourceName: "interior_design_5"), #imageLiteral(resourceName: "interior_design_8"), #imageLiteral(resourceName: "interior_design_9"), #imageLiteral(resourceName: "interior_design_10"), #imageLiteral(resourceName: "interior_design_11"), #imageLiteral(resourceName: "interior_design_12"), #imageLiteral(resourceName: "interior_design_13"), #imageLiteral(resourceName: "interior_design_14"), #imageLiteral(resourceName: "interior_design_15"), #imageLiteral(resourceName: "interior_design_16"), #imageLiteral(resourceName: "interior_design_17"), #imageLiteral(resourceName: "interior_design_18"), #imageLiteral(resourceName: "interior_design_19"), #imageLiteral(resourceName: "interior_design_20"), #imageLiteral(resourceName: "interior_design_21"), #imageLiteral(resourceName: "interior_design_22"), #imageLiteral(resourceName: "interior_design_23"), #imageLiteral(resourceName: "interior_design_24"), #imageLiteral(resourceName: "interior_design_25"), #imageLiteral(resourceName: "interior_design_26"), #imageLiteral(resourceName: "interior_design_27"), #imageLiteral(resourceName: "interior_design_28"), #imageLiteral(resourceName: "interior_design_29"), #imageLiteral(resourceName: "interior_design_30"), #imageLiteral(resourceName: "interior_design_31"), #imageLiteral(resourceName: "interior_design_32"), #imageLiteral(resourceName: "interior_design_33"), #imageLiteral(resourceName: "interior_design_34"), #imageLiteral(resourceName: "interior_design_35"), #imageLiteral(resourceName: "interior_design_36"), #imageLiteral(resourceName: "interior_design_37"), #imageLiteral(resourceName: "interior_design_38"), #imageLiteral(resourceName: "interior_design_39")]
-            
-            let alert = UIAlertController(style: self.alertStyle)
-            alert.addImagePicker(
-                flow: .vertical,
-                paging: false,
-                images: photos,
-                selection: .single(action: { image in
-                    Log(image)
-                }))
-            alert.addAction(title: "OK".localized, style: .cancel)
-            alert.show()
-            
-        case .photoLibraryPicker:
-            let alert = UIAlertController(style: self.alertStyle)
-            alert.addPhotoLibraryPicker(flow: .vertical, paging: false,
-                selection: .multiple(action: { assets in Log(assets) }))
-            alert.addAction(title: "Cancel".localized, style: .cancel)
-            alert.show()
-            
-            
+                        
         case .colorPicker:
             let alert = UIAlertController(style: self.alertStyle)
             alert.addColorPicker(color: UIColor(hex: 0xFF2DC6)) { color in Log(color) }
@@ -376,52 +335,6 @@ class ViewController: UIViewController {
             alert.addAction(title: "OK".localized, style: .cancel)
             alert.show()
             
-        case .contactsPicker:
-            let alert = UIAlertController(style: self.alertStyle)
-            alert.addContactsPicker { contact in Log(contact) }
-            alert.addAction(title: "Cancel".localized, style: .cancel)
-            alert.show()
-            
-        case .locationPicker:
-            let alert = UIAlertController(style: self.alertStyle)
-            alert.addLocationPicker { location in Log(location) }
-            alert.addAction(title: "Cancel".localized, style: .cancel)
-            alert.show()
-            
-        case .telegramPicker, .singlePhoto:
-            let alert = UIAlertController(style: .actionSheet)
-            alert.view.tintColor = UIColor.purple
-            
-            let picker = TelegramPickerViewController(selection: { [weak alert] result in
-                switch result {
-                case .media(let assets):
-                    Log(assets)
-                case .photoLibrary:
-                    Log("photo library")
-                case .contact(let contact):
-                    Log(contact)
-                case .location(let location):
-                    Log(location)
-                case .camera(let stream):
-                    Log(stream)
-                    alert?.dismiss(animated: true, completion: nil)
-                case .photosAsDocuments(let assets):
-                    Log("Photo as documents: " + assets.description)
-                case .document:
-                    Log("Document")
-                }
-            }, localizer: ExampleTelegramPickerLocalizer())
-            
-            if type == .singlePhoto {
-                picker.mediaTypes = [.photos, .camera]
-                picker.disabledButtonTypes = [.contact, .documentAsFile, .location, .file, .photoAsFile, .photoOrVideo]
-                picker.selectionMode = .single
-            }
-            
-            alert.setTelegramPicker(picker)
-            
-            alert.addAction(title: "Cancel".localized, style: .cancel)
-            alert.show()
         }
     }
 }

@@ -297,63 +297,7 @@ alert.addAction(title: "OK", style: .cancel)
 alert.show()
 ```
 
-## Image Picker
 
-<div align = "center">
-<img src="Assets/gifs/actionSheet-imagePicker-h.gif" width="350" />
-<img src="Assets/gifs/actionSheet-imagePicker-v.gif" width="350" />
-</div>
-
-* Horizontal Image Picker with paging and single selection:
-
-```swift
-let alert = UIAlertController(style: .actionSheet)
-let photos: [UIImage] = images
-alert.addImagePicker(
-    flow: .horizontal,
-    paging: true,
-    images: photos,
-    selection: .single(action: { [unowned self] image in
-        // action with selected image
-    }))
-alert.addAction(title: "OK", style: .cancel)
-alert.show()
-```
-
-* Vertical Image Picker w/o paging and with multiple selection:
-
-```swift
-let alert = UIAlertController(style: .actionSheet)
-let photos: [UIImage] = images
-alert.addImagePicker(
-    flow: .vertical,
-    paging: false,
-    height: UIScreen.main.bounds.height,
-    images: photos,
-    selection: .multiple(action: { [unowned self] images in
-        // action with selected images
-    }))
-alert.addAction(title: "OK", style: .cancel)
-alert.show()
-```
-
-## PhotoLibrary Picker
-
-<div align = "center">
-<img src="Assets/gifs/actionSheet-photoLibraryPicker.gif" width="350" />
-</div>
-
-```swift
-let alert = UIAlertController(style: .actionSheet)
-alert.addPhotoLibraryPicker(
-    flow: .horizontal,
-    paging: true,
-    selection: .single(action: { image in
-        // action with selected image
-    }))
-alert.addAction(title: "Cancel", style: .cancel)
-alert.show()
-```
 
 ## ColorPicker
 
@@ -370,59 +314,6 @@ alert.addColorPicker(color: color) { color in
     // action with selected color
 }
 alert.addAction(title: "Done", style: .cancel)
-alert.show()
-```
-
-## Contacts Picker
-
-<div align = "center">
-<img src="Assets/gifs/actionSheet-contactsPicker.gif" width="350" />
-<img src="Assets/gifs/alert-contactsPicker.gif" width="350" />
-</div>
-
-```swift
-let alert = UIAlertController(style: .actionSheet)
-alert.addContactsPicker { contact in
-    // action with contact
-}
-alert.addAction(title: "Cancel", style: .cancel)
-alert.show()
-```
-
-## Location Picker
-
-<div align = "center">
-<img src="Assets/gifs/actionSheet-locationPicker.gif" width="350" />
-</div>
-
-```swift
-let alert = UIAlertController(style: .actionSheet)
-alert.addLocationPicker { location in
-    // action with location
-}
-alert.addAction(title: "Cancel", style: .cancel)
-alert.show()
-```
-
-## Telegram Picker
-
-<div align = "center">
-<img src="Assets/gifs/actionSheet-telegramPicker.gif" width="350" />
-</div>
-
-```swift
-let alert = UIAlertController(style: .actionSheet)
-alert.addTelegramPicker { result in
-    switch result {
-      case .photo(let assets):
-        // action with assets
-      case .contact(let contact):
-        // action with contact
-      case .location(let location):
-        // action with location
-    }
-}
-alert.addAction(title: "Cancel", style: .cancel)
 alert.show()
 ```
 
@@ -453,7 +344,7 @@ There are some things to keep in mind when using `.actionSheet` and `.alert` sty
 #### CocoaPods
 
 ```ruby
-pod 'MMBAlertsPickers'
+pod 'Simple-AlertPickers'
 ```
 
 #### Manually
