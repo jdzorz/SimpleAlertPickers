@@ -19,11 +19,11 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  Simple usage of UIAlertController with TextField, DatePicker, PickerView, TableView and CollectionView adapted for using in DialogSDK.
+  Removes NSPhotoLibraryUsageDescription NSLocationWhenInUseUsageDescription NSContactsUsageDescription NSCameraUsageDescription from the forked dillidon alerts-and-pickers
                        DESC
 
   s.homepage         = 'https://github.com/jdzorz/SimpleAlertPickers'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'jideras@hotmail.com' => 'jideras@hotmail.com' }
   s.source           = { :git => 'https://github.com/jdzorz/SimpleAlertPickers.git', :tag => s.version.to_s }
