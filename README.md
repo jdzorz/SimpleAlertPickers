@@ -17,6 +17,12 @@ Advanced usage of native UIAlertController with TextField, TextView, DatePicker,
 
 
 
+# Forked repo that removes all features that might need user permissions 
+NSPhotoLibraryUsageDescription
+NSLocationWhenInUseUsageDescription
+NSContactsUsageDescription
+NSCameraUsageDescription
+
 ### Features
 - [x] Custom pickers based on UITextField, UITextView, UIDatePicker, UIPickerView, UITableView, UICollectionView and MKMapView.
 - [x] Example using a Storyboard.
