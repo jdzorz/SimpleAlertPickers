@@ -8,8 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SimpleAlertPickers'
-  s.version          = '0.1.0'
-  s.summary      = 'Simple usage of UIAlertController with TextField, DatePicker, PickerView, TableView and CollectionView adapted for using in DialogSDK'
+  s.version          = '1.2.0'
+  s.summary      = 'Simple usage of UIAlertController with TextField, DatePicker, PickerView, TableView and CollectionView adapted for using in DialogSDK.
+      Removes NSPhotoLibraryUsageDescription NSLocationWhenInUseUsageDescription NSContactsUsageDescription NSCameraUsageDescription from the forked MMBAlertsPickers'
 
 
 # This description is used to generate tags and improve search results.
