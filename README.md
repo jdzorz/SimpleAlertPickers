@@ -350,7 +350,7 @@ There are some things to keep in mind when using `.actionSheet` and `.alert` sty
 #### CocoaPods
 
 ```ruby
-pod 'Simple-AlertPickers'
+pod 'SimpleAlertPickers'
 ```
 
 #### Manually
